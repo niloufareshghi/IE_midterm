@@ -26,11 +26,11 @@
                     Female
                 </label>
                 <label class="options">
-                    <input type="radio" name="gender" value="P" />
+                    <input type="radio" name="gender" value="P" checked/>
                     As predicted
                 </label>
-                <input type="button" value="Submit" class="buttons" onclick="assigngender()" />
-                <input type="button" value="Save" class="buttons" onclick="savegender()" />
+                <input type="button" value="Submit" class="buttons" onclick="assignGender()" />
+                <input type="button" value="Save" class="buttons" onclick="saveGender()" />
 
             </form>
         </div>
@@ -41,9 +41,12 @@
             <fieldset>
                 <legend>Saved Answers</legend>
                 <span id="saved">---</span>
-                <input type="submit" value="Clear" class="buttons" onclick="removedata()" />
+                <input type="submit" value="Clear" class="buttons" onclick="removeData()" />
             </fieldset>
         </div>
+    </div>
+    <div id="error">
+        There has been an error!
     </div>
 </body>
 </html>
