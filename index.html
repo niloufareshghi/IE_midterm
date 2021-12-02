@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gender Prediction</title>
+    <link rel="shortcut icon" href="#">
+    <link href="index.css" rel="stylesheet">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div id="d0">
+        <div id="d1" class="section">
+            <h1>Mr. or Ms.?</h1>
+            <br />
+            <form>
+                <div id="inputbox">
+                    <label for="name">Name:</label>
+                    <input type="text" name="Name" id="name" value="" maxlength="255" />
+                </div>
+                <label class="options">
+                    <input type="radio" name="gender" value="Male" />
+                    Male
+                </label>
+                <label class="options">
+                    <input type="radio" name="gender" value="Female" />
+                    Female
+                </label>
+                <label class="options">
+                    <input type="radio" name="gender" value="P" />
+                    As predicted
+                </label>
+                <input type="button" value="Submit" class="buttons" onclick="assigngender()" />
+                <input type="button" value="Save" class="buttons" onclick="savegender()" />
+
+            </form>
+        </div>
+        <div id="d2" class="section">
+            <h1>Prediction</h1>
+            <span id="g">---</span>
+            <span id="p">---</span>
+            <fieldset>
+                <legend>Saved Answers</legend>
+                <span id="saved">---</span>
+                <input type="submit" value="Clear" class="buttons" onclick="removedata()" />
+            </fieldset>
+        </div>
+    </div>
+</body>
+</html>
