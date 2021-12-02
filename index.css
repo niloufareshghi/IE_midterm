@@ -16,26 +16,34 @@ body {
     justify-content: center;
     font-family: "Times New Roman", serif;
 }
-
+/* style heading1*/
 h1 {
     font-weight: bolder;
     font-size: 28px;
     font-family: "Times New Roman", serif;
 }
-
+/*
+style the saved answers fieldset
+ */
 fieldset {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     font-family: "Times New Roman", serif;
 }
-
+/*
+set the font specifications of legend in field set
+ */
 legend {
     font-size: 24px;
     font-weight: bolder;
     font-family: "Times New Roman", serif;
 }
 
+/*
+this is the content layer which contains all needed elements, display it in the center and make two columns
+using flex and also make the background transparent
+ */
 #d0 {
     width: 600px;
     height: 250px;
@@ -48,23 +56,34 @@ legend {
     border-radius: 10px;
     font-family: "Times New Roman", serif;
 }
-
+/*
+style the whole Name:input
+ */
 #inputbox {
     margin-bottom: 12px;
     font-family: "Times New Roman", serif;
 }
 
+/*
+border is colored and rounded for the input form
+ */
 #name {
     border: 2px solid forestgreen;
     border-radius: 4px;
     flex-flow: row;
 }
 
+/*
+the distance of the precision from the predicted gender is increased
+ */
 #p {
     display: flex;
     margin-top: 10px;
 }
 
+/*
+the two inner sections of our content layer is styled using flex and is aligned in a column
+ */
 .section {
     width: 500px;
     color: black;
@@ -75,12 +94,18 @@ legend {
     justify-content: space-evenly;
 }
 
+/*
+the options form is styled and finely distanced, the font is adjusted
+ */
 .options {
     display: flex;
     margin-top: 5px;
     font-family: "Times New Roman", serif;
 }
 
+/*
+every button follows this styling
+ */
 .buttons {
     background-color: white;
     color: black;
@@ -94,10 +119,15 @@ legend {
     font-family: "Times New Roman", serif;
     transition-duration: 0.4s;
 }
+/*
+when hovered over any button it's look will change
+ */
 .buttons:hover {
     background-color: darkseagreen;
 }
-
+/*
+an error box is shown on the top center of the page everytime there is an error, it is hidden at first
+ */
 #error {
     background-color: red;
     font-weight: bold;
