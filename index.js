@@ -1,5 +1,5 @@
 /*
-show error div when error occurs and hide it after 2 seconds
+show error div when error occurs and hide it after 4 seconds
  */
 
 let timer;
@@ -12,7 +12,7 @@ function showError(message) {
     let errorElement = document.getElementById("error");
     errorElement.innerHTML = message;
     errorElement.style.visibility = 'visible';
-    timer = setTimeout(function(){ errorElement.style.visibility = 'hidden'; }, 2000);
+    timer = setTimeout(function(){ errorElement.style.visibility = 'hidden'; }, 4000);
 }
 
 /*
@@ -39,6 +39,9 @@ async function assignGender() {
         }).catch((error) => {
             showError("There was a problem! (details: " + error.toString() + ")");
         });
+    if (entry.gender === null){
+        showError("Server was unable to predict the gender of this name!")
+    }
     document.getElementById('g').innerHTML = entry.gender; //show the predicted gender in html
     document.getElementById('p').innerHTML = entry.precision; // show the precision of prediction in html
 
