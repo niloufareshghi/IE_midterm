@@ -59,7 +59,7 @@ async function assignGender() {
     if(localStorage.getItem(name) != null){
         document.getElementById('saved').innerHTML = localStorage.getItem(name) //if there is a saved suggestion, show it
     }else {
-        document.getElementById('saved').innerHTML = "---"
+        document.getElementById('saved').innerHTML = "---";
     }
 
     return entry.gender
