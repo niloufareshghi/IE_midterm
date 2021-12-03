@@ -28,6 +28,7 @@ async function assignGender() {
         showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
         document.getElementById('g').innerHTML = "---";
         document.getElementById('p').innerHTML = "---";
+        document.getElementById('saved').innerHTML = "---"
         return
     }
     let entry = {name: '', gender: '', precision: 0};
@@ -47,10 +48,12 @@ async function assignGender() {
     if (flag === 1){
         document.getElementById('g').innerHTML = "---";
         document.getElementById('p').innerHTML = "---";
+        document.getElementById('saved').innerHTML = "---"
         return
     }
     if (! entry.gender){
         showError("Server was unable to predict the gender of this name!")
+        document.getElementById('saved').innerHTML = "---"
         document.getElementById('g').innerHTML = "---";
         document.getElementById('p').innerHTML = "---";
         return
@@ -92,6 +95,7 @@ async function saveGender(){
         if (! pred){
             document.getElementById('g').innerHTML = "---";
             document.getElementById('p').innerHTML = "---";
+            document.getElementById('saved').innerHTML = "---"
             return
         } else {
             localStorage.setItem(name, pred) //save user's suggestion in local storage
