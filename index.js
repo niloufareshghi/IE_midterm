@@ -22,13 +22,13 @@ by clicking the button, the name (if valid) is passed to the genderize api
 the response should be processed and the predicted gender and its precision should be reported
  */
 async function assignGender() {
+    document.getElementById('g').innerHTML = "---";
+    document.getElementById('p').innerHTML = "---";
+    document.getElementById('saved').innerHTML = "---"
     let name_element = document.getElementById('name'); //access input box as an element
     let name = name_element.value; //gets the value aka the user input
     if(!checkName(name)){
         showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
-        document.getElementById('g').innerHTML = "---";
-        document.getElementById('p').innerHTML = "---";
-        document.getElementById('saved').innerHTML = "---"
         return
     }
     let entry = {name: '', gender: '', precision: 0};
@@ -46,16 +46,11 @@ async function assignGender() {
             flag = 1
         });
     if (flag === 1){
-        document.getElementById('g').innerHTML = "---";
-        document.getElementById('p').innerHTML = "---";
-        document.getElementById('saved').innerHTML = "---"
+        
         return
     }
     if (! entry.gender){
         showError("Server was unable to predict the gender of this name!")
-        document.getElementById('saved').innerHTML = "---"
-        document.getElementById('g').innerHTML = "---";
-        document.getElementById('p').innerHTML = "---";
         return
     }
     document.getElementById('g').innerHTML = entry.gender; //show the predicted gender in html
@@ -74,12 +69,12 @@ async function assignGender() {
 save predicted answer or save user's suggestion in local storage
  */
 async function saveGender(){
+    document.getElementById('g').innerHTML = "---";
+    document.getElementById('p').innerHTML = "---";
+    document.getElementById('saved').innerHTML = "---"
     let option_element = document.getElementsByName('gender'); //get the radio options
     let name = document.getElementById('name').value; //access input box value
     if(!checkName(name)){
-        document.getElementById('saved').innerHTML = "---"
-        document.getElementById('g').innerHTML = "---";
-        document.getElementById('p').innerHTML = "---";
         showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
         return
     }
@@ -93,9 +88,6 @@ async function saveGender(){
     if(option_value === 'P'){
         let pred = await assignGender()
         if (! pred){
-            document.getElementById('g').innerHTML = "---";
-            document.getElementById('p').innerHTML = "---";
-            document.getElementById('saved').innerHTML = "---"
             return
         } else {
             localStorage.setItem(name, pred) //save user's suggestion in local storage
