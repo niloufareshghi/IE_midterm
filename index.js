@@ -26,9 +26,11 @@ async function assignGender() {
     let name = name_element.value; //gets the value aka the user input
     if(!checkName(name)){
         showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
+        return
     }
     let entry = {name: '', gender: '', precision: 0};
 
+    let flag;
     await fetch('https://api.genderize.io/?name=' + name) //sending GET request
         .then(response => response.json()) //extract the json from the response
         .then(response => {
@@ -38,9 +40,14 @@ async function assignGender() {
             entry.precision = response['probability'];
         }).catch((error) => {
             showError("There was a problem! (details: " + error.toString() + ")");
+            flag = 1
         });
-    if (entry.gender === null){
+    if (flag === 1){
+        return
+    }
+    if (! entry.gender){
         showError("Server was unable to predict the gender of this name!")
+        return
     }
     document.getElementById('g').innerHTML = entry.gender; //show the predicted gender in html
     document.getElementById('p').innerHTML = entry.precision; // show the precision of prediction in html
@@ -60,6 +67,11 @@ save predicted answer or save user's suggestion in local storage
 async function saveGender(){
     let option_element = document.getElementsByName('gender'); //get the radio options
     let name = document.getElementById('name').value; //access input box value
+    if(!checkName(name)){
+        document.getElementById('saved').innerHTML = "---"
+        showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
+        return
+    }
     let option_value;
     for(let i = 0; i < option_element.length; i++){ //get the value of the radio button that is checked
         if(option_element[i].checked){
@@ -69,8 +81,8 @@ async function saveGender(){
     }
     if(option_value === 'P'){
         let pred = await assignGender()
-        if (pred === null){
-            showError("There was no prediction for this name")
+        if (! pred){
+            return
         } else {
             localStorage.setItem(name, pred) //save user's suggestion in local storage
         }
