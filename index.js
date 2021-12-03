@@ -9,8 +9,6 @@ function showError(message) {
         clearTimeout(timer);
         timer = null;
     }
-    document.getElementById('g').innerHTML = "---";
-    document.getElementById('p').innerHTML = "---";
     let errorElement = document.getElementById("error");
     errorElement.innerHTML = message;
     errorElement.style.visibility = 'visible';
@@ -28,6 +26,8 @@ async function assignGender() {
     let name = name_element.value; //gets the value aka the user input
     if(!checkName(name)){
         showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
+        document.getElementById('g').innerHTML = "---";
+        document.getElementById('p').innerHTML = "---";
         return
     }
     let entry = {name: '', gender: '', precision: 0};
@@ -45,10 +45,14 @@ async function assignGender() {
             flag = 1
         });
     if (flag === 1){
+        document.getElementById('g').innerHTML = "---";
+        document.getElementById('p').innerHTML = "---";
         return
     }
     if (! entry.gender){
         showError("Server was unable to predict the gender of this name!")
+        document.getElementById('g').innerHTML = "---";
+        document.getElementById('p').innerHTML = "---";
         return
     }
     document.getElementById('g').innerHTML = entry.gender; //show the predicted gender in html
@@ -71,6 +75,8 @@ async function saveGender(){
     let name = document.getElementById('name').value; //access input box value
     if(!checkName(name)){
         document.getElementById('saved').innerHTML = "---"
+        document.getElementById('g').innerHTML = "---";
+        document.getElementById('p').innerHTML = "---";
         showError("Name is not valid, make sure the field is not empty and has only letters and spaces")
         return
     }
@@ -84,6 +90,8 @@ async function saveGender(){
     if(option_value === 'P'){
         let pred = await assignGender()
         if (! pred){
+            document.getElementById('g').innerHTML = "---";
+            document.getElementById('p').innerHTML = "---";
             return
         } else {
             localStorage.setItem(name, pred) //save user's suggestion in local storage
