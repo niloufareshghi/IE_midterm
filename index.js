@@ -9,6 +9,8 @@ function showError(message) {
         clearTimeout(timer);
         timer = null;
     }
+    document.getElementById('g').innerHTML = "---";
+    document.getElementById('p').innerHTML = "---";
     let errorElement = document.getElementById("error");
     errorElement.innerHTML = message;
     errorElement.style.visibility = 'visible';
